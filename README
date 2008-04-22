@@ -9,7 +9,7 @@ Example
 model
 
 class Post < ActiveRecord::Base
-  is_questionable
+  captchas_with_question
 end
 
 <h1>New post</h1>
