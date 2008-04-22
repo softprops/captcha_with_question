@@ -1,0 +1,46 @@
+IsQuestionable
+==============
+
+Think customizable captcha's minus the image. Just simple logic. RMagic not required.
+
+Example
+=======
+
+model
+
+class Post < ActiveRecord::Base
+  is_questionable
+end
+
+<h1>New post</h1>
+
+
+view
+
+<%= error_messages_for :post %>
+
+<% form_for(@post) do |f| %>
+  ....
+  
+  <%= questionable_fields(f) %>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+  
+<% end %>
+
+controller
+
+class PostsController < ApplicationController
+  
+  before_filter :assign_captcha_question, :only => [:new]
+  ...
+end
+
+
+
+
+
+Copyright (c) 2008 softprops, released under the MIT license
+inspired by github's nakajima's rails-math-capcha
